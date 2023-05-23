@@ -57,6 +57,14 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+        'flare' => [
+            'driver' => 'flare',
+        ],
+        'stack' => [
+            'driver' => 'stack',
+            'channels' => ['daily', 'flare'],
+            'ignore_exceptions' => false,
+        ],
 
         'single' => [
             'driver' => 'single',
@@ -81,6 +89,7 @@ return [
             'level' => env('LOG_LEVEL', 'critical'),
             'replace_placeholders' => true,
         ],
+        
 
         'papertrail' => [
             'driver' => 'monolog',
@@ -128,4 +137,5 @@ return [
         ],
     ],
 
+ 
 ];
