@@ -57,6 +57,7 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+<<<<<<< HEAD
         'flare' => [
             'driver' => 'flare',
         ],
@@ -65,6 +66,8 @@ return [
             'channels' => ['daily', 'flare'],
             'ignore_exceptions' => false,
         ],
+=======
+>>>>>>> 7f7f7282d98748859990061e432598cb63f6c8a2
 
         'single' => [
             'driver' => 'single',
@@ -89,7 +92,10 @@ return [
             'level' => env('LOG_LEVEL', 'critical'),
             'replace_placeholders' => true,
         ],
+<<<<<<< HEAD
         
+=======
+>>>>>>> 7f7f7282d98748859990061e432598cb63f6c8a2
 
         'papertrail' => [
             'driver' => 'monolog',
@@ -137,5 +143,9 @@ return [
         ],
     ],
 
+<<<<<<< HEAD
  
 ];
+=======
+];
+>>>>>>> 7f7f7282d98748859990061e432598cb63f6c8a2

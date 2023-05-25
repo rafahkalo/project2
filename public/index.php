@@ -3,6 +3,12 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
+=======
+use Illuminate \Encryption\MissingAppKeyException
+;
+
+>>>>>>> 7f7f7282d98748859990061e432598cb63f6c8a2
 define('LARAVEL_START', microtime(true));
 
 /*
