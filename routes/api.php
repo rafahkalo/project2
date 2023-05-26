@@ -29,7 +29,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('addoffice',[OfficesController::class,'addOffice']);
 Route::post('addgoverment',[GovermentController::class,'addGoverment']);
 Route::post('addbranch',[BranchsController::class,'addBranch']);
-Route::post('searchByBranch',[BranchsController::class,'searchByBranch']);
+Route::get('searchByBranch/{id}',[BranchsController::class,'searchByBranch']);
+Route::get('alllBranches',[BranchsController::class,'alllBranches']);
 Route::post('addtypetravel',[TypeController::class,'addtype']);
 Route::post('addstars',[StarController::class,'addStars']);
 

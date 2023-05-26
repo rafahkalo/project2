@@ -26,10 +26,25 @@ class BranchsController extends Controller
             return  response()->json(['message'=>'Branch save successfully'], 200);
         
         }
+        public function alllBranches(){
 
-        public function searchByBranch(Request $request){
+        $branches=Branch::all();
 
-            $branch=Branch::with(['office'])->where('name',$request->name)->get();
+
+        return  response()->json(['Offices'=>$branches], 200);
+}
+
+
+            
+        
+        public function searchByBranch($id){
+
+            $branch=Branch::with(['office'=>function($q){
+            }])->get();
+            
+            
+            
+            //)->where('id',$id)->get();
             
             return  response()->json(['Offices'=>$branch], 200);
 

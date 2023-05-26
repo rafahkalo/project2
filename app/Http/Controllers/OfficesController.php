@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Office;
+use App\Models\Number;
 use App\Http\Controllers\FileController as FileController;
 class OfficesController extends FileController
 {
@@ -24,8 +25,6 @@ class OfficesController extends FileController
 
         ]);
         $photo = $this->saveFile($request, 'image', public_path('public/uploads/'));
-
-
         $office = Office::create([
 
             'image' => $photo,
@@ -39,6 +38,24 @@ class OfficesController extends FileController
 
 
         ]);
+
+        $phones=$request->phones;
+    //     foreach($phones as $phone){
+
+    //     $phone=Number::create([
+    //         'phone'=>$phone,
+    //         'id_office'=>$office->id 
+
+    //     ]);
+    
+    // }
+    foreach($phones as $phone) {
+        $data[] = [
+            'phone' => $phone,
+            'id_office' => $office->id
+        ];
+    }
+    Number::insert($data);
         return response()->json(['message' => 'office save successfully'], 200);
 
     }
