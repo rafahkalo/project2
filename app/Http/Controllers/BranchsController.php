@@ -27,5 +27,12 @@ class BranchsController extends Controller
         
         }
 
+        public function searchByBranch(Request $request){
 
+            $branch=Branch::with(['office'])->where('name',$request->name)->get();
+            
+            return  response()->json(['Offices'=>$branch], 200);
+
+    
+        }
 }

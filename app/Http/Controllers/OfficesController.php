@@ -56,9 +56,19 @@ public function AcceptOffice($id){
     'info office'=> $Office], 200);
 
 }
+public function RefuseOffice($id){
+
+    Office::find($id)->delete();
+    return response()->json(['message' => 'Cancel this Office',
+    ], 200);
+}
+
+public function searchByName(Request $request){
+
+    $office=Office::with(['branch.goverment'])->where('name',$request->name)->get();
+    return response()->json(['Office Info' => $office], 200);
+
 }
 
 
-
-
-
+}

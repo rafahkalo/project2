@@ -25,14 +25,14 @@ class Branch extends Model
 
     public function office()
     {
-     return $this->hasMany(Office::class);
+     return $this->hasMany(Office::class,'id_branch');
  
     }
          
  
     public function goverment()
     {
-        return $this->belongsTo(Goverments::class);
+        return $this->belongsTo(Goverments::class,'id_gov');
     }
 
 

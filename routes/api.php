@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('addoffice',[OfficesController::class,'addOffice']);
 Route::post('addgoverment',[GovermentController::class,'addGoverment']);
 Route::post('addbranch',[BranchsController::class,'addBranch']);
+Route::post('searchByBranch',[BranchsController::class,'searchByBranch']);
 Route::post('addtypetravel',[TypeController::class,'addtype']);
 Route::post('addstars',[StarController::class,'addStars']);
 
@@ -38,8 +39,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
 Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
-
+Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
+Route::post('searchbyName',[OfficesController::class,'searchByName']);
 Route::middleware('auth:sanctum')->group( function () {
 
 });
-
