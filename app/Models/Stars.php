@@ -9,20 +9,21 @@ class Stars extends Model
 {
     use HasFactory;
     protected $table='stars';
-    
+
     public $timestamps=false;
-     
-   
+
+
     protected $fillable=[
-        
-        'name',  
+
+        'name',
+        'number'
     ];
 
-    
-    
+
+
     public function office()
     {
      return $this->hasMany(Office::class);
- 
+
     }
 }
