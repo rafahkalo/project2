@@ -42,6 +42,9 @@ Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
 Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
 Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
 Route::post('searchbyName',[OfficesController::class,'searchByName']);
+Route::get('getInfoOffice/{id}',[OfficesController::class,'getInformationOffice']);
+Route::get('getOfficesByStars/{num}',[OfficesController::class,'getOfficesByStars']);
+Route::post('editStar/{id}',[OfficesController::class,'editStar']);
 Route::middleware('auth:sanctum')->group( function () {
 
 });

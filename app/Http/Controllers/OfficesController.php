@@ -86,6 +86,39 @@ public function searchByName(Request $request){
     return response()->json(['Office Info' => $office], 200);
 
 }
+public function getInformationOffice($id)
+{
+    $office = Office::find($id);
 
+    if (!$office) {
+        return response()->json(['message' => 'Office not found'], 404);
+    }
+
+    return response()->json($office);
+}
+
+public function getOfficesByStars($stars)
+{
+    $star = Stars::where('number', $stars)->first();
+
+    if (!$star) {
+        return response()->json(['message' => 'No offices found for the given number of stars'], 404);
+    }
+
+    $offices =Office::where('id_star' , $star->id)->get();
+
+    return response()->json($offices);
+}
+public function editStar(Request $request,$id)
+{
+    $star = Stars::where('number', $request->input('stars'))->first();
+    if (!$star) {
+        return response()->json(['message' => 'Invalid star rating'], 404);
+    }
+    $Office=Office::find($id)->update([
+        'id_star' => $star->id]);   
+
+    return response()->json(['message' => 'Stars updated successfully'],200);
+}
 
 }
