@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Office;
+use App\Models\Stars;
 use App\Models\Number;
 use App\Http\Controllers\FileController as FileController;
 class OfficesController extends FileController
@@ -49,14 +50,17 @@ class OfficesController extends FileController
     //     ]);
     
     // }
-    foreach($phones as $phone) {
-        $data[] = [
-            'phone' => $phone,
-            'id_office' => $office->id
-        ];
-    }
-    Number::insert($data);
-        return response()->json(['message' => 'office save successfully'], 200);
+   
+        foreach($phones as $phone) {
+            $data[] = [
+                'phone' => $phone,
+                'id_office' => $office->id
+            ];
+        }
+        Number::insert($data);
+          
+    
+     return response()->json(['message' => 'office save successfully'], 200);
 
     }
 
@@ -86,6 +90,38 @@ public function searchByName(Request $request){
     return response()->json(['Office Info' => $office], 200);
 
 }
+public function getInformationOffice($id)
+{
+    $office = Office::find($id);
 
+    if (!$office) {
+        return response()->json(['message' => 'Office not found'], 404);
+    }
 
+    return response()->json($office);
+}
+
+public function getOfficesByStars($stars)
+{
+    $star = Stars::where('number', $stars)->first();
+
+    if (!$star) {
+        return response()->json(['message' => 'No offices found for the given number of stars'], 404);
+    }
+
+    $offices =Office::where('id_star' , $star->id)->get();
+
+    return response()->json($offices);
+}
+public function editStar(Request $request,$id)
+{
+    $star = Stars::where('number', $request->input('stars'))->first();
+    if (!$star) {
+        return response()->json(['message' => 'Invalid star rating'], 404);
+    }
+    $Office=Office::find($id)->update([
+        'id_star' => $star->id]);   
+
+    return response()->json(['message' => 'Stars updated successfully'],200);
+}
 }

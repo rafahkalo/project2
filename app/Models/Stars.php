@@ -9,7 +9,7 @@ class Stars extends Model
 {
     use HasFactory;
     protected $table='stars';
-
+    protected $primaryKey ="id";
     public $timestamps=false;
 
 
@@ -21,7 +21,7 @@ class Stars extends Model
 
 
 
-    public function office()
+    public function offices()
     {
      return $this->hasMany(Office::class);
 

@@ -33,7 +33,7 @@ class Office extends Model
     
     public function stars()
     {
-        return $this->belongsTo(Stars::class);
+        return $this->belongsTo(Stars::class,'id');
     }
     
     public function type_travel()
