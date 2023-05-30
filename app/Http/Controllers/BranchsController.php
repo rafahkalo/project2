@@ -19,7 +19,7 @@ class BranchsController extends Controller
 
        $data= new Branch();
        $data->name=$request->name;
-       $data->id_gov=$request->id_gov;
+       $data->gov_id=$request->id_gov;
 
        $data->save();
 

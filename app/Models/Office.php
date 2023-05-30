@@ -17,9 +17,9 @@ class Office extends Model
         
         'name',
         'status',
-        'id_branch',
-        'id_type',
-        'id_star',
+        'branch_id',
+        'type_id',
+        'star_id',
         'location',
         'image',
         'discreption',
@@ -43,6 +43,6 @@ class Office extends Model
  
     public function branch()
     {
-        return $this->belongsTo(Branch::class,'id','id_branch');
+        return $this->belongsTo(Branch::class,'id','branch_id');
     }
 }

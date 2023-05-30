@@ -17,9 +17,9 @@ class OfficesController extends FileController
 
             'name' => 'required|string',
 
-            'id_branch' => 'required',
-            'id_type' => 'required',
-            'id_star' => 'required',
+            'branch_id' => 'required',
+            'type_id' => 'required',
+            'star_id' => 'required',
             'location' => 'required|string',
             'image' => 'required|min:1',
             'discreption' => 'required|string',
@@ -30,10 +30,10 @@ class OfficesController extends FileController
 
             'image' => $photo,
             'name' => $input['name'],
-            'id_branch' => $input['id_branch'],
-            'id_type' => $input['id_type'],
+            'branch_id' => $input['id_branch'],
+            'type_id' => $input['id_type'],
 
-            'id_star' => $input['id_star'],
+            'star_id' => $input['id_star'],
             'location' => $input['location'],
             'discreption' => $input['discreption'],
 
@@ -41,25 +41,15 @@ class OfficesController extends FileController
         ]);
 
         $phones=$request->phones;
-    //     foreach($phones as $phone){
-
-    //     $phone=Number::create([
-    //         'phone'=>$phone,
-    //         'id_office'=>$office->id 
-
-    //     ]);
-    
-    // }
-   
         foreach($phones as $phone) {
             $data[] = [
                 'phone' => $phone,
-                'id_office' => $office->id
+                'office_id' => $office->id
             ];
         }
         Number::insert($data);
-          
-    
+
+
      return response()->json(['message' => 'office save successfully'], 200);
 
     }
@@ -109,7 +99,7 @@ public function getOfficesByStars($stars)
         return response()->json(['message' => 'No offices found for the given number of stars'], 404);
     }
 
-    $offices =Office::where('id_star' , $star->id)->get();
+    $offices =Office::where('star_id' , $star->id)->get();
 
     return response()->json($offices);
 }
@@ -120,7 +110,7 @@ public function editStar(Request $request,$id)
         return response()->json(['message' => 'Invalid star rating'], 404);
     }
     $Office=Office::find($id)->update([
-        'id_star' => $star->id]);   
+        'id_star' => $star->id]);
 
     return response()->json(['message' => 'Stars updated successfully'],200);
 }

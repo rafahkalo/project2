@@ -15,7 +15,7 @@ class Number extends Model
    
     protected $fillable=[
         
-        'id_office',
+        'office_id',
         'phone',
 
     ];

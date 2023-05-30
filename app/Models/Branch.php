@@ -17,7 +17,7 @@ class Branch extends Model
     [
         
         'name',
-        'id_gov',
+        'gov_id',
         
     ];
 
@@ -25,7 +25,7 @@ class Branch extends Model
 
     public function office()
     {
-     return $this->hasMany(Office::class,'id_branch');
+     return $this->hasMany(Office::class,'branch_id');
  
     }
          

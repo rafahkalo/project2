@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('status')->default(false);
-            ;
-            $table->integer('id_branch');
-            $table->integer('id_type');
-            $table->integer('id_star');
+            $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
+            
+            $table->foreignId('type_id')->constrained('type_travels')->onDelete('cascade');
+            
+            $table->foreignId('star_id')->constrained('stars')->onDelete('cascade');
+            
             $table->longText('location');
             $table->string('image');
             $table->longText('discreption');
