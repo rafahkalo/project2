@@ -13,13 +13,13 @@ class BranchsController extends Controller
            
 
             'name'=>'required|string'  ,
-            'id_gov'=>'required'  ,
+            'gov_id'=>'required'  ,
           ]);
      
 
        $data= new Branch();
        $data->name=$request->name;
-       $data->gov_id=$request->id_gov;
+       $data->gov_id=$request->gov_id;
 
        $data->save();
 

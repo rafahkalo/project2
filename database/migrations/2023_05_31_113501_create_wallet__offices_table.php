@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('numbers', function (Blueprint $table) {
+        Schema::create('wallet__offices', function (Blueprint $table) {
             $table->id();
+            
             $table->foreignId('office_id')->constrained('offices')->onDelete('cascade');
-
-            $table->string('phone');
+            $table->BigInteger('code')->unique();
+            $table->integer('amount');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('numbers');
+        Schema::dropIfExists('wallet__offices');
     }
 };

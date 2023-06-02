@@ -7,55 +7,76 @@ use App\Models\Office;
 use App\Models\Stars;
 use App\Models\Number;
 use App\Http\Controllers\FileController as FileController;
+use App\Models\Wallet;
+use App\Models\Wallet_Office;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 class OfficesController extends FileController
 {
 
-    public function addOffice(Request $request)
+    public function requestJoin(Request $request)
     {
 
-        $input = $request->validate([
+         $rules=([
 
             'name' => 'required|string',
-
             'branch_id' => 'required',
             'type_id' => 'required',
             'star_id' => 'required',
             'location' => 'required|string',
-            'image' => 'required|min:1',
+            'image' => 'required',
             'discreption' => 'required|string',
+             'code'=>'required',
+             'email'=>'required',
+             'password'=>'required',
+            'amount'=>'required',
+            'phones' =>'required|array'
 
         ]);
-        $photo = $this->saveFile($request, 'image', public_path('public/uploads/'));
+        $validator = Validator::make($request->all(), $rules);
+
+
+        if ($validator->fails()) {
+            return  $validator->messages();
+        }
+
+        $photo = $this->saveFile($request, 'image', public_path('/uploads'));
         $office = Office::create([
 
             'image' => $photo,
-            'name' => $input['name'],
-            'branch_id' => $input['id_branch'],
-            'type_id' => $input['id_type'],
+            'name' => $request->name,
+            'branch_id' => $request->branch_id,
+            'type_id' => $request->type_id,
 
-            'star_id' => $input['id_star'],
-            'location' => $input['location'],
-            'discreption' => $input['discreption'],
-
+            'star_id' => $request->star_id,
+            'location' => $request->location,
+            'discreption' => $request->discreption,
+            'email'=>$request->email,
+            'password'=> Hash::make($request->password)
 
         ]);
 
         $phones=$request->phones;
+        if (is_array($phones) || is_object($phones))
+{
         foreach($phones as $phone) {
-            $data[] = [
-                'phone' => $phone,
-                'office_id' => $office->id
-            ];
+             $num=new Number();
+            $num->phone=$phone;
+            $num->office_id=$office->id;
+            $num->save();
         }
-        Number::insert($data);
-
-
+}
+Wallet_Office::create([
+'code'=>$request->code,
+'amount'=>$request->amount,
+'office_id'=>$office->id
+]);
      return response()->json(['message' => 'office save successfully'], 200);
 
     }
 
    public function showAllOffices(){
-        $offices=Office::where('status',null)->get();
+        $offices=Office::where('status','0')->get();
        return response()->json(['AllOffices' => $offices], 200);
    }
 public function AcceptOffice($id){
@@ -114,4 +135,66 @@ public function editStar(Request $request,$id)
 
     return response()->json(['message' => 'Stars updated successfully'],200);
 }
+
+public function AddOffice(Request $request)
+    {
+
+         $rules=([
+
+            'name' => 'required|string',
+            'branch_id' => 'required',
+            'type_id' => 'required',
+            'star_id' => 'required',
+            'location' => 'required|string',
+            'image' => 'required',
+            'discreption' => 'required|string',
+             'code'=>'required',
+             'email'=>'required',
+             'status'=>'required',
+             'password'=>'required',
+            'amount'=>'required',
+            'phones' =>'required|array'
+
+        ]);
+        $validator = Validator::make($request->all(), $rules);
+
+
+        if ($validator->fails()) {
+            return  $validator->messages();
+        }
+
+        $photo = $this->saveFile($request, 'image', public_path('/uploads'));
+        $office = Office::create([
+
+            'image' => $photo,
+            'name' => $request->name,
+            'branch_id' => $request->branch_id,
+            'type_id' => $request->type_id,
+            'status' => $request->status,
+            'star_id' => $request->star_id,
+            'location' => $request->location,
+            'discreption' => $request->discreption,
+            'email'=>$request->email,
+            'password'=> Hash::make($request->password)
+
+        ]);
+
+        $phones=$request->phones;
+        if (is_array($phones) || is_object($phones))
+{
+        foreach($phones as $phone) {
+             $num=new Number();
+            $num->phone=$phone;
+            $num->office_id=$office->id;
+            $num->save();
+        }
+}
+Wallet_Office::create([
+'code'=>$request->code,
+'amount'=>$request->amount,
+'office_id'=>$office->id
+]);
+     return response()->json(['message' => 'office save successfully'], 200);
+
+    }
 }

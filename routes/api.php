@@ -25,8 +25,19 @@ use  App\Http\Controllers\TypeController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+########### OfficesController ###################
+Route::post('requestJoin',[OfficesController::class,'requestJoin']);
+Route::post('AddOffice',[OfficesController::class,'AddOffice']);
+Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
+Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
+Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
+Route::post('searchbyName',[OfficesController::class,'searchByName']);
 
-Route::post('addoffice',[OfficesController::class,'addOffice']);
+
+
+
+
+
 Route::post('addgoverment',[GovermentController::class,'addGoverment']);
 Route::post('addbranch',[BranchsController::class,'addBranch']);
 Route::get('searchByBranch/{id}',[BranchsController::class,'searchByBranch']);
@@ -38,10 +49,6 @@ Route::post('addstars',[StarController::class,'addStars']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
-Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
-Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
-Route::post('searchbyName',[OfficesController::class,'searchByName']);
 
 Route::get('getInfoOffice/{id}',[OfficesController::class,'getInformationOffice']);
 Route::get('getOfficesByStars/{num}',[OfficesController::class,'getOfficesByStars']);

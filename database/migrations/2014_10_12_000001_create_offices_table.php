@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('status')->default(false);
             $table->foreignId('branch_id')->constrained('branches')->onDelete('cascade');
-            
             $table->foreignId('type_id')->constrained('type_travels')->onDelete('cascade');
-            
             $table->foreignId('star_id')->constrained('stars')->onDelete('cascade');
-            
+            $table->string('email')->unique();
+            $table->string('password');
             $table->longText('location');
             $table->string('image');
             $table->longText('discreption');

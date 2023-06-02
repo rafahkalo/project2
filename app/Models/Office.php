@@ -14,7 +14,8 @@ class Office extends Model
      
   
     protected $fillable=[
-        
+        'email',
+        'password',
         'name',
         'status',
         'branch_id',
@@ -31,6 +32,11 @@ class Office extends Model
  
     }
     
+    public function wallets()
+    {
+     return $this->hasMany(Wallet_Office::class,'office_id');
+ 
+    }
     public function stars()
     {
         return $this->belongsTo(Stars::class,'id');
