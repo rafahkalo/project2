@@ -18,7 +18,10 @@ class OfficesController extends FileController
     {
 
          $rules=([
+<<<<<<< HEAD
 
+=======
+>>>>>>> 56a234b (addtional by noha)
             'name' => 'required|string',
             'branch_id' => 'required',
             'type_id' => 'required',
@@ -30,7 +33,13 @@ class OfficesController extends FileController
              'email'=>'required',
              'password'=>'required',
             'amount'=>'required',
+<<<<<<< HEAD
             'phones' =>'required|array'
+=======
+            'phoneOne' =>'required|string',
+            'phoneTwo'=>'required|string',
+            'contract'=>'required'
+>>>>>>> 56a234b (addtional by noha)
 
         ]);
         $validator = Validator::make($request->all(), $rules);
@@ -41,13 +50,24 @@ class OfficesController extends FileController
         }
 
         $photo = $this->saveFile($request, 'image', public_path('/uploads'));
+<<<<<<< HEAD
+=======
+        $photoo = $this->saveFile($request, 'contract', public_path('/uploads'));
+
+>>>>>>> 56a234b (addtional by noha)
         $office = Office::create([
 
             'image' => $photo,
             'name' => $request->name,
             'branch_id' => $request->branch_id,
             'type_id' => $request->type_id,
+<<<<<<< HEAD
 
+=======
+              'contract'=>$photoo,
+              'phoneOne'=>$request->phoneOne,
+              'phoneTwo'=>$request->phoneTwo,
+>>>>>>> 56a234b (addtional by noha)
             'star_id' => $request->star_id,
             'location' => $request->location,
             'discreption' => $request->discreption,
@@ -56,8 +76,13 @@ class OfficesController extends FileController
 
         ]);
 
+<<<<<<< HEAD
         $phones=$request->phones;
         if (is_array($phones) || is_object($phones))
+=======
+        /*$phones=$request->phones;
+       /* if (is_array($phones) || is_object($phones))
+>>>>>>> 56a234b (addtional by noha)
 {
         foreach($phones as $phone) {
              $num=new Number();
@@ -65,7 +90,11 @@ class OfficesController extends FileController
             $num->office_id=$office->id;
             $num->save();
         }
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> 56a234b (addtional by noha)
 Wallet_Office::create([
 'code'=>$request->code,
 'amount'=>$request->amount,
@@ -147,13 +176,23 @@ public function AddOffice(Request $request)
             'star_id' => 'required',
             'location' => 'required|string',
             'image' => 'required',
+<<<<<<< HEAD
+=======
+            'contract'=>'required',
+>>>>>>> 56a234b (addtional by noha)
             'discreption' => 'required|string',
              'code'=>'required',
              'email'=>'required',
              'status'=>'required',
              'password'=>'required',
             'amount'=>'required',
+<<<<<<< HEAD
             'phones' =>'required|array'
+=======
+            'phoneOne' =>'required|string',
+            'phoneTwo'=>'required|string',
+            //
+>>>>>>> 56a234b (addtional by noha)
 
         ]);
         $validator = Validator::make($request->all(), $rules);
@@ -164,9 +203,17 @@ public function AddOffice(Request $request)
         }
 
         $photo = $this->saveFile($request, 'image', public_path('/uploads'));
+<<<<<<< HEAD
         $office = Office::create([
 
             'image' => $photo,
+=======
+        $photoo= $this->saveFile($request, 'contract', public_path('/uploads'));
+        $office = Office::create([
+
+            'image' => $photo,
+           'contract'=>$photoo,
+>>>>>>> 56a234b (addtional by noha)
             'name' => $request->name,
             'branch_id' => $request->branch_id,
             'type_id' => $request->type_id,
@@ -175,11 +222,20 @@ public function AddOffice(Request $request)
             'location' => $request->location,
             'discreption' => $request->discreption,
             'email'=>$request->email,
+<<<<<<< HEAD
+=======
+            'phoneOne' => $request->phoneOne,
+            'phoneTwo'=> $request->phoneTwo,
+>>>>>>> 56a234b (addtional by noha)
             'password'=> Hash::make($request->password)
 
         ]);
 
+<<<<<<< HEAD
         $phones=$request->phones;
+=======
+      /*  $phones=$request->phones;
+>>>>>>> 56a234b (addtional by noha)
         if (is_array($phones) || is_object($phones))
 {
         foreach($phones as $phone) {
@@ -188,7 +244,11 @@ public function AddOffice(Request $request)
             $num->office_id=$office->id;
             $num->save();
         }
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> 56a234b (addtional by noha)
 Wallet_Office::create([
 'code'=>$request->code,
 'amount'=>$request->amount,

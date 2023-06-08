@@ -22,6 +22,12 @@ return new class extends Migration
             $table->string('password');
             $table->longText('location');
             $table->string('image');
+<<<<<<< HEAD
+=======
+            $table->string('contract');
+            $table->string('phoneOne');
+            $table->string('phoneTwo');
+>>>>>>> 56a234b (addtional by noha)
             $table->longText('discreption');
             $table->timestamps();
         });
