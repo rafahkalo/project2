@@ -23,12 +23,12 @@ class Office extends Model
         'star_id',
         'location',
         'image',
-<<<<<<< HEAD
-=======
+
+
         'phoneOne',
         'phoneTwo',
         'contract',
->>>>>>> 56a234b (addtional by noha)
+
         'discreption',
     ];
 
