@@ -31,8 +31,6 @@ class OfficesController extends FileController
             'email' => 'required',
             'password' => 'required',
             'amount' => 'required',
-
-            'phones' => 'required|array',
             'phoneOne' => 'required|string',
             'phoneTwo' => 'required|string',
             'contract' => 'required'
@@ -169,9 +167,6 @@ class OfficesController extends FileController
             'status' => 'required',
             'password' => 'required',
             'amount' => 'required',
-
-            'phones' => 'required|array',
-
             'phoneOne' => 'required|string',
             'phoneTwo' => 'required|string',
 
@@ -209,15 +204,42 @@ class OfficesController extends FileController
             'password' => Hash::make($request->password)
 
         ]);
-
-
-
-
         Wallet_Office::create([
             'code' => $request->code,
             'amount' => $request->amount,
             'office_id' => $office->id
         ]);
         return response()->json(['message' => 'office save successfully'], 200);
+    }
+    public function loginOffice(Request $request){
+
+        // if(auth()->user()->status=='true'){
+
+        // }
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
+
+        // Check email
+        $office = Office::where('email', $fields['email'])->first();
+
+        // Check password
+        if(!$office || !Hash::check($fields['password'], $office->password)) {
+            return response([
+                'message' => 'Password is worng'
+            ], 401);
+        }
+        $token = $office->createToken('ooficeToken')->plainTextToken;
+
+        $response = [
+            'user' => $office,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+
+
+
     }
 }
