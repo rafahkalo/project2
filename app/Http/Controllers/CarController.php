@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorCarRequestr;
 use App\Models\Car;
 use Illuminate\Http\Request;
 
-class CarController extends Controller
+class CarController extends FileController
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +27,13 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorCarRequestr $request)
     {
-        //
+        $photo = $this->saveFile($request, 'image', public_path('/carImages'));
+
+        $validated = $request->validated();
+        Car::create($validated);
+        return response()->json(['meesage'=>'Added Successfully Car']);
     }
 
     /**

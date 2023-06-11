@@ -9,6 +9,7 @@ use  App\Http\Controllers\GovermentController;
 use  App\Http\Controllers\StarController;
 use  App\Http\Controllers\OfficesController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\CarController;
 use  App\Http\Controllers\TypeController;
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
 Route::post('searchbyName',[OfficesController::class,'searchByName']);
 Route::post('loginOffice',[OfficesController::class,'loginOffice']);
 
+
+########### CarController ###################
+Route::post('car/add',[CarController::class,'store']);
 
 
 
