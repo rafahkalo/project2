@@ -213,9 +213,7 @@ class OfficesController extends FileController
     }
     public function loginOffice(Request $request){
 
-        // if(auth()->user()->status=='true'){
-
-        // }
+      
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
@@ -223,6 +221,10 @@ class OfficesController extends FileController
 
         // Check email
         $office = Office::where('email', $fields['email'])->first();
+
+          if($office->status=='true'){
+
+        
 
         // Check password
         if(!$office || !Hash::check($fields['password'], $office->password)) {
@@ -233,11 +235,20 @@ class OfficesController extends FileController
         $token = $office->createToken('ooficeToken')->plainTextToken;
 
         $response = [
-            'user' => $office,
+            'message' => 'Welcome With You',
             'token' => $token
         ];
 
-        return response($response, 201);
+        return response($response, 201);}
+        else{
+            $response = [
+                'message' => 'Wait the Acceptance',
+            
+            ];
+            return response($response, 201);
+
+
+        }
 
 
 

@@ -32,6 +32,7 @@ Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
 Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
 Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
 Route::post('searchbyName',[OfficesController::class,'searchByName']);
+Route::post('loginOffice',[OfficesController::class,'loginOffice']);
 
 
 
