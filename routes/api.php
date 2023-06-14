@@ -11,6 +11,7 @@ use  App\Http\Controllers\OfficesController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CarController;
 use  App\Http\Controllers\TypeController;
+use  App\Http\Controllers\DriverController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,10 +40,15 @@ Route::post('loginOffice',[OfficesController::class,'loginOffice']);
 ########### CarController ###################
 Route::post('car/add',[CarController::class,'store']);
 
+########### DriverController ###################
+Route::post('driver/JoinRequest',[DriverController::class,'JoinRequest']);
+Route::get('driver/AcceptDriver/{id}',[DriverController::class,'AcceptDriver']);
+Route::delete('driver/RefuseDriver/{id}',[DriverController::class,'RefuseDriver']);
 
+########### ExternalTravelController ###################
+Route::get('ExternalTravel/getTravels',[ExternalTravelController::class,'getTravels']);
 
-
-
+//////////////////////////////////////////////////////////
 Route::post('addgoverment',[GovermentController::class,'addGoverment']);
 Route::post('addbranch',[BranchsController::class,'addBranch']);
 Route::get('searchByBranch/{id}',[BranchsController::class,'searchByBranch']);

@@ -10,9 +10,10 @@ class ExternalTravelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getTravels(Office $office)
     {
-        //
+        $travels= $office->external__travels()->get();
+        return response()->json($travels,200);
     }
 
     /**
@@ -20,7 +21,7 @@ class ExternalTravelController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +29,7 @@ class ExternalTravelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

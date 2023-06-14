@@ -53,11 +53,9 @@ class OfficesController extends FileController
             'name' => $request->name,
             'branch_id' => $request->branch_id,
             'type_id' => $request->type_id,
-
             'contract' => $photoo,
             'phoneOne' => $request->phoneOne,
             'phoneTwo' => $request->phoneTwo,
-
             'star_id' => $request->star_id,
             'location' => $request->location,
             'discreption' => $request->discreption,
@@ -119,6 +117,11 @@ class OfficesController extends FileController
             return response()->json(['message' => 'Office not found'], 404);
         }
 
+         if (!$office->status) {
+            return response()->json(['message' => 'Office is not approved'], 403);
+        }
+
+
         return response()->json($office);
     }
 
@@ -130,7 +133,7 @@ class OfficesController extends FileController
             return response()->json(['message' => 'No offices found for the given number of stars'], 404);
         }
 
-        $offices = Office::where('star_id', $star->id)->get();
+        $offices = Office::where('star_id', $star->id)->where('status', true)->get();
 
         return response()->json($offices);
     }
@@ -158,9 +161,7 @@ class OfficesController extends FileController
             'star_id' => 'required',
             'location' => 'required|string',
             'image' => 'required',
-
             'contract' => 'required',
-
             'discreption' => 'required|string',
             'code' => 'required',
             'email' => 'required',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorCarRequestr;
 use App\Models\Car;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 
 class CarController extends FileController
@@ -11,9 +12,10 @@ class CarController extends FileController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Office $office)
     {
-        //
+        //$cars= $office->cars()->get();
+        //return response()->json($cars,200);
     }
 
     /**
@@ -67,4 +69,7 @@ class CarController extends FileController
     {
         //
     }
+
+  
+
 }

@@ -10,5 +10,11 @@ class Driver extends Model
     use HasFactory;
     
     protected $table='drivers';
-    protected $fillable = ['res_id','content'];
+    public $timestamps=false;
+    protected $fillable = ['office_id','address','status','image2','image1','last_name','first_name','email','password','phoneOne','phoneTwo'];
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class,'id');
+    }
 }

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('number');
             $table->foreignId('color_id')->constrained('colors')->onDelete('cascade');
             $table->foreignId('type_id')->constrained('car_types')->onDelete('cascade');
+            
+            $table->foreignId('driver_id')->nullable()->constrained('drivers')->onDelete('cascade');
             $table->timestamps();
         });
     }

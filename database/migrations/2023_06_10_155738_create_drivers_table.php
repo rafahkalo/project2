@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('image1');
             $table->string('image2');
-            $table->string('status');
+            $table->string('status')->default(false);;
             $table->string('address');
-            
             $table->foreignId('office_id')->constrained('offices')->onDelete('cascade');
-            $table->foreignId('car_id')->constrained('cars')->onDelete('cascade');
-            
+        
+            $table->string('phoneOne');
+            $table->string('phoneTwo');
             $table->timestamps();
         });
     }

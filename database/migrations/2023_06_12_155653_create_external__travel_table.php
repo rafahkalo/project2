@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('cost');
             $table->string('status');
             $table->string('time_paid');
-            
             $table->foreignId('driver_id')->constrained('drivers')->onDelete('cascade');
             $table->foreignId('office_id')->constrained('offices')->onDelete('cascade');            
 
@@ -36,4 +35,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('external__travel');
     }
+
+    
 };
