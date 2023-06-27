@@ -53,11 +53,17 @@ class OfficesController extends FileController
             'name' => $request->name,
             'branch_id' => $request->branch_id,
             'type_id' => $request->type_id,
+<<<<<<< HEAD
 
             'contract' => $photoo,
             'phoneOne' => $request->phoneOne,
             'phoneTwo' => $request->phoneTwo,
 
+=======
+            'contract' => $photoo,
+            'phoneOne' => $request->phoneOne,
+            'phoneTwo' => $request->phoneTwo,
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
             'star_id' => $request->star_id,
             'location' => $request->location,
             'discreption' => $request->discreption,
@@ -119,6 +125,14 @@ class OfficesController extends FileController
             return response()->json(['message' => 'Office not found'], 404);
         }
 
+<<<<<<< HEAD
+=======
+         if (!$office->status) {
+            return response()->json(['message' => 'Office is not approved'], 403);
+        }
+
+
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
         return response()->json($office);
     }
 
@@ -130,7 +144,11 @@ class OfficesController extends FileController
             return response()->json(['message' => 'No offices found for the given number of stars'], 404);
         }
 
+<<<<<<< HEAD
         $offices = Office::where('star_id', $star->id)->get();
+=======
+        $offices = Office::where('star_id', $star->id)->where('status', true)->get();
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
 
         return response()->json($offices);
     }
@@ -158,9 +176,13 @@ class OfficesController extends FileController
             'star_id' => 'required',
             'location' => 'required|string',
             'image' => 'required',
+<<<<<<< HEAD
 
             'contract' => 'required',
 
+=======
+            'contract' => 'required',
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
             'discreption' => 'required|string',
             'code' => 'required',
             'email' => 'required',

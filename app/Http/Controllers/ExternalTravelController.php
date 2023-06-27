@@ -10,9 +10,16 @@ class ExternalTravelController extends Controller
     /**
      * Display a listing of the resource.
      */
+<<<<<<< HEAD
     public function index()
     {
         //
+=======
+    public function getTravels(Office $office)
+    {
+        $travels= $office->external__travels()->get();
+        return response()->json($travels,200);
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
     }
 
     /**
@@ -20,7 +27,11 @@ class ExternalTravelController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         //
+=======
+        
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
     }
 
     /**
@@ -28,7 +39,11 @@ class ExternalTravelController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
+=======
+       
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
     }
 
     /**

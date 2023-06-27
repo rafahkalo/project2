@@ -18,6 +18,11 @@ return new class extends Migration
             $table->integer('number');
             $table->foreignId('color_id')->constrained('colors')->onDelete('cascade');
             $table->foreignId('type_id')->constrained('car_types')->onDelete('cascade');
+<<<<<<< HEAD
+=======
+            
+            $table->foreignId('driver_id')->nullable()->constrained('drivers')->onDelete('cascade');
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
             $table->timestamps();
         });
     }

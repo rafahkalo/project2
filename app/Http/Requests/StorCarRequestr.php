@@ -45,5 +45,10 @@ class StorCarRequestr extends FormRequest
 
 
 
+<<<<<<< HEAD
 
 }
+=======
+    
+}
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8

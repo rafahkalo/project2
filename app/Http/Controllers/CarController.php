@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorCarRequestr;
 use App\Models\Car;
+<<<<<<< HEAD
+=======
+use App\Models\Driver;
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
 use Illuminate\Http\Request;
 
 class CarController extends FileController
@@ -11,9 +15,16 @@ class CarController extends FileController
     /**
      * Display a listing of the resource.
      */
+<<<<<<< HEAD
     public function index()
     {
         //
+=======
+    public function index(Office $office)
+    {
+        //$cars= $office->cars()->get();
+        //return response()->json($cars,200);
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
     }
 
     /**
@@ -67,4 +78,10 @@ class CarController extends FileController
     {
         //
     }
+<<<<<<< HEAD
+=======
+
+  
+
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
 }

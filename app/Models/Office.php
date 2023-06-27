@@ -60,4 +60,12 @@ class Office extends Model
     {
         return $this->belongsTo(Branch::class,'id','branch_id');
     }
+<<<<<<< HEAD
+=======
+
+    public function external__travels()
+    {
+        return $this->hasMany(External_Travel::class,'office_id');
+    }
+>>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
 }
