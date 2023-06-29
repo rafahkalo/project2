@@ -9,12 +9,16 @@ use  App\Http\Controllers\GovermentController;
 use  App\Http\Controllers\StarController;
 use  App\Http\Controllers\OfficesController;
 use App\Http\Controllers\Auth\AuthController;
+<<<<<<< HEAD
 use App\Http\Controllers\CarController;
 use  App\Http\Controllers\TypeController;
 <<<<<<< HEAD
 =======
 use  App\Http\Controllers\DriverController;
 >>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
+=======
+use  App\Http\Controllers\TypeController;
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,6 +41,7 @@ Route::get('showAllOffices',[OfficesController::class,'showAllOffices']);
 Route::post('AcceptOffice/{id}',[OfficesController::class,'AcceptOffice']);
 Route::delete('RefuseOffice/{id}',[OfficesController::class,'RefuseOffice']);
 Route::post('searchbyName',[OfficesController::class,'searchByName']);
+<<<<<<< HEAD
 Route::post('loginOffice',[OfficesController::class,'loginOffice']);
 
 
@@ -59,6 +64,14 @@ Route::get('ExternalTravel/getTravels',[ExternalTravelController::class,'getTrav
 
 //////////////////////////////////////////////////////////
 >>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
+=======
+
+
+
+
+
+
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
 Route::post('addgoverment',[GovermentController::class,'addGoverment']);
 Route::post('addbranch',[BranchsController::class,'addBranch']);
 Route::get('searchByBranch/{id}',[BranchsController::class,'searchByBranch']);

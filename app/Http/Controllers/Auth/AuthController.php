@@ -12,11 +12,18 @@ class AuthController extends Controller
     public function register(Request $request) {
         $validator = Validator::make($request->all(),
             [
+<<<<<<< HEAD
 
                 'firstname' => 'required|string|max:255',
                 'lastname' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:6'
+=======
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+             'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
 
             ]);
         if ($validator->fails()) {
@@ -69,6 +76,7 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
+<<<<<<< HEAD
     // public function logout(Request $request) {
     //     auth()->user()->token()->delete();
 
@@ -77,3 +85,13 @@ class AuthController extends Controller
     //     ];
     // }
 }
+=======
+    public function logout(Request $request) {
+        auth()->user()->tokens()->delete();
+
+        return [
+            'message' => 'Logged out'
+        ];
+    }
+}
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0

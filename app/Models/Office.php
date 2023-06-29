@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+<<<<<<< HEAD
 //use Illuminate\Foundation\Auth\Office as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -11,6 +12,12 @@ use Laravel\Sanctum\HasApiTokens;
 class Office extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+=======
+
+class Office extends Model
+{
+    use HasFactory;
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
     protected $table='offices';
     
     public $timestamps=false;
@@ -26,12 +33,18 @@ class Office extends Model
         'star_id',
         'location',
         'image',
+<<<<<<< HEAD
 
 
         'phoneOne',
         'phoneTwo',
         'contract',
 
+=======
+        'phoneOne',
+        'phoneTwo',
+        'contract',
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
         'discreption',
     ];
 
@@ -61,6 +74,7 @@ class Office extends Model
         return $this->belongsTo(Branch::class,'id','branch_id');
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     public function external__travels()
@@ -68,4 +82,6 @@ class Office extends Model
         return $this->hasMany(External_Travel::class,'office_id');
     }
 >>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
+=======
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
 }

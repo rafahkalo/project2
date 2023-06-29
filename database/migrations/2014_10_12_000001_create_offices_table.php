@@ -22,11 +22,17 @@ return new class extends Migration
             $table->string('password');
             $table->longText('location');
             $table->string('image');
+<<<<<<< HEAD
 
             $table->string('contract');
             $table->string('phoneOne');
             $table->string('phoneTwo');
 
+=======
+            $table->string('contract');
+            $table->string('phoneOne');
+            $table->string('phoneTwo');
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
             $table->longText('discreption');
             $table->timestamps();
         });
@@ -40,7 +46,10 @@ return new class extends Migration
         Schema::dropIfExists('offices');
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
 >>>>>>> 38fac941b19a62499b1fe823b56acd1d48d0e5f8
+=======
+>>>>>>> 56a234b2000b2235402f92a9f8949f53699211b0
 };
